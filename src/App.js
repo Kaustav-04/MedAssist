@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 function App() {
   const [ans,setAns] = useState([])
   const [value,setValue] = useState('')
@@ -25,7 +25,12 @@ function App() {
     } catch (error) {
       return ;
     }
+    
   }
+
+  useEffect(()=>{
+    window.console.log = () => {};
+  },[])
   return (
     <div className="App">
       <div id='form'>
