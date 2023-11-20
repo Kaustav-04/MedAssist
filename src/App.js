@@ -60,6 +60,7 @@ function App() {
         <br />
         <br />
       </p>
+      <footer>Designed and Developed by Ankita Kundu &copy; 2023</footer>
     </div>
   );
 }
