@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+require('dotenv').config()
 
 // Import the OpenAI
 const { Configuration, OpenAIApi } = require("openai");
@@ -8,6 +9,7 @@ const { Configuration, OpenAIApi } = require("openai");
 // Create a new OpenAI configuration and paste your API key
 // obtained from Step 1
 // The key displayed here is a fake key
+console.log(process.env.OPENAI_API_KEY)
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -43,7 +45,7 @@ app.post("/chatbot", async (req, res) => {
   //   },
   // ];
 
-  res.json(choices[0].text);
+  // res.json(choices[0].text);
 
   // Query the OpenAI API
   // Bringing in the training model from Part 1 of the tutorial on mental health
@@ -61,7 +63,7 @@ app.post("/chatbot", async (req, res) => {
         presence_penalty: 0,
     });
     console.log(response.data);
-    res.json(response.data);
+    res.json(response.data.choices[0].text);
 });
 
 app.get("/*", (req, res) =>
